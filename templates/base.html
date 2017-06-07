@@ -55,11 +55,12 @@
 
     <!-- Bootstrap -->
     {% if BOOTSTRAP_THEME %}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0-alpha.6/{{ BOOTSTRAP_THEME }}/bootstrap.min.css" rel="stylesheet">
     {% else %}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" type="text/css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     {% endif %}
-    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/entypo.css" rel="stylesheet">
 
     <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
     {% if 'tipue_search' in PLUGINS %}
@@ -113,10 +114,12 @@
                 <span class="icon-bar"></span>
             </button>
             {% endif %}
+            {% if SITELOGO or not HIDE_SITENAME %}
             <a href="{{ SITEURL }}/" class="navbar-brand">
                 {% if SITELOGO %}<img class="img-responsive pull-left gap-right" src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
                 {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
             </a>
+            {% endif %}
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -152,7 +155,7 @@
               </li>
             {% endif %}
             {% if ARCHIVES_SAVE_AS %}
-              <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="fa fa-th-list"></i><span class="icon-label">{{ _('Archives') }}</span></a></li>
+              <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="icon-list"></i><span class="icon-label">{{ _('Archives') }}</span></a></li>
             {% endif %}
             </ul>
         </div>
@@ -179,7 +182,7 @@
         {% endblock %}
         </div>
         {% if not HIDE_SIDEBAR or ABOUT_ME or AVATAR %}
-        <div class="col-sm-3{% if SIDEBAR_ON_LEFT %} col-sm-pull-9{% endif %}" id="sidebar">
+        <div class="col-sm-3{% if SIDEBAR_ON_LEFT %} col-sm-pull-12{% endif %}" id="sidebar">
             <aside>
             {% if ABOUT_ME or AVATAR %}
                 {% include 'includes/aboutme.html' %}
@@ -194,10 +197,10 @@
 </div>
 {% include 'includes/footer.html' %}
 
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/respond.min.js"></script>
