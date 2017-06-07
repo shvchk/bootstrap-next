@@ -3,6 +3,7 @@
     {% if articles %}
         {% for article in (articles_page.object_list if articles_page else articles) %}
             <article>
+                <time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
                 <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
                 {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
                     <div class="well well-sm">
@@ -11,7 +12,9 @@
                 {% endif %}
                 <div class="summary">{{ article.summary }}
                     {% include 'includes/comment_count.html' %}
-                    <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">{{ _('more') }} ...</a>
+                    <div class="clearfix">
+                        <a class="btn btn-default btn-md pull-right" href="{{ SITEURL }}/{{ article.url }}">{{ _('more') }} ...</a>
+                    </div>
                 </div>
             </article>
             <hr/>
