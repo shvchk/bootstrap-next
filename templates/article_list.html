@@ -1,26 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
     {% if articles %}
-        {% for article in (articles_page.object_list if articles_page else articles) %}
-            <article>
-                <time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
-                <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-                {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
-                    <div class="card">
-                        <div class="card-block">
-                            {% include "includes/article_info.html" %}
+        <div class="article-list">
+            {% for article in (articles_page.object_list if articles_page else articles) %}
+                <article>
+                    <time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
+                    <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                    {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
+                        <div class="card">
+                            <div class="card-block">
+                                {% include "includes/article_info.html" %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="summary">{{ article.summary }}
+                        {% include 'includes/comment_count.html' %}
+                        <div class="clearfix">
+                            <a class="btn btn-secondary btn-md float-right" href="{{ SITEURL }}/{{ article.url }}">{{ _('more') }}…</a>
                         </div>
                     </div>
-                {% endif %}
-                <div class="summary">{{ article.summary }}
-                    {% include 'includes/comment_count.html' %}
-                    <div class="clearfix">
-                        <a class="btn btn-secondary btn-md float-right" href="{{ SITEURL }}/{{ article.url }}">{{ _('more') }}…</a>
-                    </div>
-                </div>
-            </article>
-            <hr/>
-        {% endfor %}
+                </article>
+                <hr/>
+            {% endfor %}
+        </div>
     {% endif %}
 
     {% include 'includes/pagination.html' %}
