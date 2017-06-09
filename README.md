@@ -1,9 +1,6 @@
-# pelican-bootstrap3
+# bootstrap-next
 
-This is a Bootstrap 3 theme for Pelican, originally developed by
-[DandyDev](https://github.com/DandyDev).  It's fully responsive and contains
-sub-themes from the Bootswatch project.  Pelican-bootstrap3 is compatible with
-Pelican 3.3.0 and higher.
+This is a Bootstrap 4 theme for Pelican, based on [pelican-bootstrap3](https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3), originally developed by [DandyDev](https://github.com/DandyDev). It's fully responsive and contains sub-themes from the Bootswatch project. Bootstrap-next is compatible with Pelican 3.3.0 and higher.
 
 ## CONTRIBUTING
 
@@ -17,12 +14,12 @@ request**. For contributing guidelines, [look here](CONTRIBUTING.md)
 
 First:
 
-`git clone https://github.com/getpelican/pelican-themes.git`
+`git clone https://github.com/shvchk/bootstrap-next.git`
 
 Then:
 
 Point the `THEME` variable in your `pelicanconf.py` to
-`/path/to/pelican-bootstrap3` and add 
+`/path/to/bootstrap-next` and add
 
 ```
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
@@ -61,17 +58,9 @@ control the amount of tags shown with: `TAG_CLOUD_MAX_ITEMS`
 
 ## Extras
 
-### Bootswatch and other Bootstrap 3 themes
+### Bootswatch and other Bootstrap themes
 
-Part of the versatility of this theme comes from the fact that I included all
-the lovely Bootstrap 3 themes from [Bootswatch](http://bootswatch.com/), built
-by [Thomas Park](https://github.com/thomaspark). You can tell Pelican what
-Bootswatch theme to use, by setting `BOOTSTRAP_THEME` to the desired theme, in
-lowercase (ie. 'readable' or 'cosmo' etc.). My own site is using _Simplex_. If
-you want to use any other Bootstrap 3 compatible theme, just put the minified
-CSS in the `static/css` directory and rename it using the following naming
-scheme: `bootstrap.{theme-name}.min.css`. Then update the `BOOTSTRAP_THEME`
-variable with the _theme-name_ used.
+Part of the versatility of this theme comes from the fact that I included all the lovely Bootstrap themes from [Bootswatch](https://bootswatch.com/4-alpha), built by [Thomas Park](https://github.com/thomaspark). You can tell Pelican what Bootswatch theme to use, by setting `BOOTSTRAP_THEME` to the desired theme, in lowercase (ie. 'readable' or 'cosmo' etc.). My own site is using _Simplex_. If you want to use any other Bootstrap compatible theme, just put the `bootstrap.min.css` in the `static/css/themes/{theme-name}`. Then update the `BOOTSTRAP_THEME` variable with the _theme-name_ used.
 
 ### Article info
 
@@ -135,10 +124,7 @@ For a demo of the different Pygment styles, have a look [here](http://pygments.o
 
 ### Pagination
 
-Pelican-Bootstrap3 follows the standard Pagination settings of Pelican and uses
-the Bootstrap3 [Pagination
-component](http://getbootstrap.com/components/#pagination), but you can
-optionally use the Boostrap3 _Pager_ by setting `USE_PAGER` to `True`.
+Bootstrap-next follows the standard Pagination settings of Pelican and uses the Bootstrap [Pagination component](http://getbootstrap.com/components/#pagination), but you can optionally use simple `Previous` `Next` pager by setting `USE_PAGER` to `True`.
 
 ### Bootstrap fluid layout
 
@@ -348,7 +334,7 @@ All you have to do, is:
 - enable the plugin, and the theme will add a search box on the right
   side of the menu
 - Add `'search'` to the `DIRECT_TEMPLATES` in your `pelicanconf.py`. E.g. `DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search').
-By default, the Tipue search page is configured at "/search.html", but you can override that with the `SEARCH_URL` 
+By default, the Tipue search page is configured at "/search.html", but you can override that with the `SEARCH_URL`
 setting, which comes in handy if you have fancy rewrite rules in your Apache or Nginx configuration.
 
 ### Footer
@@ -382,5 +368,3 @@ If you want more examples of what you could do with this theme, have a [look her
 ![](screenshot.png)
 
 ![](screenshot-article.png)
-
-
