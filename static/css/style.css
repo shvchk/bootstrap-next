@@ -2,6 +2,10 @@ body {
     padding-top: 7rem;
 }
 
+pre {
+    padding: 1rem;
+}
+
 #sidebar .list-group, #sidebar .list-group-item {
     background-color: transparent;
 }
