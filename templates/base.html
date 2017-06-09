@@ -175,7 +175,7 @@
         {% endblock %}
         </div>
         {% if not HIDE_SIDEBAR or ABOUT_ME or AVATAR %}
-        <div class="col-md-3{% if SIDEBAR_ON_LEFT %} pull-md-12{% endif %}" id="sidebar">
+        <div class="col-md-3{% if SIDEBAR_ON_LEFT %} pull-md-9{% endif %}" id="sidebar">
             <aside>
             {% if ABOUT_ME or AVATAR %}
                 {% include 'includes/aboutme.html' %}
