@@ -103,65 +103,58 @@
 </head>
 <body>
 
-<div class="navbar {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-inverse{% else %}navbar-default{% endif %} navbar-fixed-top" role="navigation">
-	<div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
-        <div class="navbar-header">
-            {% if MENUITEMS or (pages and DISPLAY_PAGES_ON_MENU) or (categories and DISPLAY_CATEGORIES_ON_MENU) %}
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<nav class="navbar navbar-toggleable-md {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-inverse bg-inverse{% else %}navbar-light bg-faded{% endif %} fixed-top" role="navigation">
+    {% if MENUITEMS or (pages and DISPLAY_PAGES_ON_MENU) or (categories and DISPLAY_CATEGORIES_ON_MENU) %}
+    <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target=".navbar-main-collapse" aria-label="Toggle navigation">
+        <i class="icon-menu"></i>
+    </button>
+    {% endif %}
+    {% if SITELOGO or not HIDE_SITENAME %}
+    <a href="{{ SITEURL }}/" class="navbar-brand">
+        {% if SITELOGO %}<img class="img-fluid pull-left gap-right" src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
+        {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
+    </a>
+    {% endif %}
+    <div class="collapse navbar-collapse navbar-main-collapse">
+        <ul class="navbar-nav">
+            {% for title, link in MENUITEMS %}
+                <li class="nav-item"><a href="{{ link }}" class="nav-link">{{ title }}</a></li>
+            {% endfor %}
+            {% if not PAGES_SORT_ATTRIBUTE -%}
+                {% set PAGES_SORT_ATTRIBUTE = 'title' %}
+            {%- endif %}
+            {% if DISPLAY_PAGES_ON_MENU %}
+                {% for p in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
+                    {% if p.url %}
+                     <li class="nav-item {% if p == page %}active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}" class="nav-link">
+                         {{ p.menulabel|default(p.title) }}
+                      </a></li>
+                    {% endif %}
+                  {% endfor %}
             {% endif %}
-            {% if SITELOGO or not HIDE_SITENAME %}
-            <a href="{{ SITEURL }}/" class="navbar-brand">
-                {% if SITELOGO %}<img class="img-fluid pull-left gap-right" src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
-                {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
-            </a>
-            {% endif %}
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
+            {% if DISPLAY_CATEGORIES_ON_MENU %}
+                {% for cat, null in categories %}
+                    <li class="nav-item {% if cat == category %}active{% endif %}">
+                        <a href="{{ SITEURL }}/{{ cat.url }}" class="nav-link">{{ cat | capitalize }}</a>
+                    </li>
                 {% endfor %}
-                {% if not PAGES_SORT_ATTRIBUTE -%}
-                    {% set PAGES_SORT_ATTRIBUTE = 'title' %}
-                {%- endif %}
-                {% if DISPLAY_PAGES_ON_MENU %}
-                    {% for p in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
-                        {% if p.url %}
-                         <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">
-                             {{ p.menulabel|default(p.title) }}
-                          </a></li>
-                        {% endif %}
-                      {% endfor %}
-                {% endif %}
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                    {% for cat, null in categories %}
-                        <li {% if cat == category %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            {% if 'tipue_search' in PLUGINS %}
-              <li><span>
-                <form class="navbar-search" action="{{ SEARCH_URL | default('/search.html') }}">
-                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
-                </form></span>
-              </li>
             {% endif %}
-            {% if ARCHIVES_SAVE_AS %}
-              <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="icon-list"></i><span class="icon-label">{{ _('Archives') }}</span></a></li>
-            {% endif %}
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+        </ul>
+        <ul class="navbar-nav navbar-right">
+        {% if 'tipue_search' in PLUGINS %}
+          <li class="nav-item"><span>
+            <form class="navbar-search" action="{{ SEARCH_URL | default('/search.html') }}">
+              <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+            </form></span>
+          </li>
+        {% endif %}
+        {% if ARCHIVES_SAVE_AS %}
+          <li class="nav-item"><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" class="nav-link"><i class="icon-list"></i><span class="icon-label">{{ _('Archives') }}</span></a></li>
+        {% endif %}
+        </ul>
     </div>
-</div> <!-- /.navbar -->
+    <!-- /.navbar-collapse -->
+</nav> <!-- /.navbar -->
 <!-- Banner -->
 {% if BANNER and BANNER_ALL_PAGES %}
     {% include 'includes/banner.html' %}
