@@ -11,7 +11,7 @@
          {% else %}
             {% set copy_date = '' %}
          {% endif %}
-         <div class="col-xs-10">&copy; {{ copy_date }} {{ AUTHOR }}
+         <div class="col-sm-10">&copy; {{ copy_date }} {{ AUTHOR }}
             &middot; {{ _('Powered by') }} <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>
             {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
               {% from 'includes/cc-license.html' import cc_license_mark %}
@@ -20,7 +20,7 @@
               <p><small>{{ CUSTOM_LICENSE }}</small></p>
             {% endif %}
          </div>
-         <div class="col-xs-2"><p class="float-right"><i class="icon-up-big"></i> <a href="#">{{ _('Back to top') }}</a></p></div>
+         <div class="col-sm-2"><p class="float-right"><i class="icon-up-big"></i> <a href="#">{{ _('Back to top') }}</a></p></div>
       </div>
    </div>
 </footer>
