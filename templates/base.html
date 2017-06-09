@@ -116,7 +116,7 @@
             {% endif %}
             {% if SITELOGO or not HIDE_SITENAME %}
             <a href="{{ SITEURL }}/" class="navbar-brand">
-                {% if SITELOGO %}<img class="img-responsive pull-left gap-right" src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
+                {% if SITELOGO %}<img class="img-fluid pull-left gap-right" src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
                 {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
             </a>
             {% endif %}
@@ -172,7 +172,7 @@
 <div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
     <div class="row">
         {% if not HIDE_SIDEBAR or ABOUT_ME or AVATAR %}
-        <div class="col-sm-9{% if SIDEBAR_ON_LEFT %} col-sm-push-3{% endif %}">
+        <div class="col-sm-9{% if SIDEBAR_ON_LEFT %} push-sm-3{% endif %}">
         {% else %}
         <div class="col-lg-12">
         {% endif %}
