@@ -60,7 +60,7 @@ control the amount of tags shown with: `TAG_CLOUD_MAX_ITEMS`
 
 ### Bootswatch and other Bootstrap themes
 
-Part of the versatility of this theme comes from the fact that I included all the lovely Bootstrap themes from [Bootswatch](https://bootswatch.com/4-alpha), built by [Thomas Park](https://github.com/thomaspark). You can tell Pelican what Bootswatch theme to use, by setting `BOOTSTRAP_THEME` to the desired theme, in lowercase (ie. 'readable' or 'cosmo' etc.). My own site is using _Simplex_. If you want to use any other Bootstrap compatible theme, just put the `bootstrap.min.css` in the `static/css/themes/{theme-name}`. Then update the `BOOTSTRAP_THEME` variable with the _theme-name_ used.
+Part of the versatility of this theme comes from the fact that I included all the lovely Bootstrap themes from [Bootswatch](https://bootswatch.com/4), built by [Thomas Park](https://github.com/thomaspark). You can tell Pelican what Bootswatch theme to use, by setting `BOOTSTRAP_THEME` to the desired theme, in lowercase (ie. 'readable' or 'cosmo' etc.). My own site is using _Simplex_. If you want to use any other Bootstrap compatible theme, just put the `bootstrap.min.css` in the `static/css/themes/{theme-name}`. Then update the `BOOTSTRAP_THEME` variable with the _theme-name_ used.
 
 ### Article info
 
